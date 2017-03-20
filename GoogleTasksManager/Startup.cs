@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using GoogleTasksManager.Data;
 using GoogleTasksManager.Models;
 using GoogleTasksManager.Services;
+using NLog.Extensions.Logging;
 
 namespace GoogleTasksManager
 {
@@ -59,6 +60,7 @@ namespace GoogleTasksManager
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+            loggerFactory.AddNLog();
 
             if (env.IsDevelopment())
             {
