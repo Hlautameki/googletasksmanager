@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using GoogleTasksManager.Data;
 using GoogleTasksManager.Models;
 using GoogleTasksManager.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GoogleTasksManager
 {
@@ -46,8 +47,12 @@ namespace GoogleTasksManager
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
-            services.AddMvc();
+            
+            services.AddMvc(options =>
+            {
+                options.SslPort = 44361;
+                options.Filters.Add(new RequireHttpsAttribute());
+            });
 
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
