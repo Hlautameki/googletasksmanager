@@ -260,3 +260,6 @@ paket-files/
 __pycache__/
 *.pyc
 /GoogleTasksManager/Properties/PublishProfiles/googletasksmanager.com - Web Deploy.pubxml
+
+# Production configuration file
+appsettings.Production.json
